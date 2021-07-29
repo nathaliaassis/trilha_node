@@ -1,5 +1,5 @@
-import { Category } from "../models/Category";
-import { ICategoriesRepository, ICreateCategoryDTO } from "./ICategoriesRepository";
+import { Category } from "../../models/Category";
+import { ICategoriesRepository, ICreateCategoryDTO } from "..   /ICategoriesRepository";
 
 /**
  * os repositories são responsáveis por toda manipulação de dados
