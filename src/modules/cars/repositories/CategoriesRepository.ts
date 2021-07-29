@@ -9,8 +9,21 @@ import { ICategoriesRepository, ICreateCategoryDTO } from "./ICategoriesReposito
 class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
-  constructor() {
+  // singleton - para nao criar novas intancias do repository
+  private static INSTANCE: CategoriesRepository;
+
+  private constructor() {
     this.categories = [];
+  }
+
+  //get instance é responsável por instanciar nossa classe ou retornar 
+  // uma instancia já existente
+  public static getInstance(): CategoriesRepository {
+    if (!CategoriesRepository.INSTANCE) {
+      CategoriesRepository.INSTANCE = new CategoriesRepository();
+    }
+
+    return CategoriesRepository.INSTANCE;
   }
 
   create({ name, description }: ICreateCategoryDTO): void {

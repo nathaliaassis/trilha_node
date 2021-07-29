@@ -4,7 +4,7 @@ import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
 // arquivo para instanciar tudo que foi criado para ser usado nas rotas
 
-const categoriesRepository = new CategoriesRepository();
+const categoriesRepository = CategoriesRepository.getInstance();
 
 const createCategoryUseCase = new CreateCategoryUseCase(categoriesRepository);
 
