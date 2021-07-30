@@ -1,5 +1,5 @@
-import { Specification } from "../models/Specification";
-import { ICreateSpecificationDTO, ISpecificationRepository } from "./ISpecificationsRepository";
+import { Specification } from "../../models/Specification";
+import { ICreateSpecificationDTO, ISpecificationRepository } from "../ISpecificationsRepository";
 
 /**
  * os repositories são responsáveis por toda manipulação de dados
@@ -9,8 +9,21 @@ import { ICreateSpecificationDTO, ISpecificationRepository } from "./ISpecificat
 class SpecificationsRespository implements ISpecificationRepository {
   private specifications: Specification[];
 
-  constructor() {
+  // singleton - para nao criar novas intancias do repository
+  private static INSTANCE: SpecificationsRespository;
+
+  private constructor() {
     this.specifications = [];
+  }
+
+  //get instance é responsável por instanciar nossa classe ou retornar 
+  // uma instancia já existente
+  public static getInstance(): SpecificationsRespository {
+    if (!SpecificationsRespository.INSTANCE) {
+      SpecificationsRespository.INSTANCE = new SpecificationsRespository();
+    }
+
+    return SpecificationsRespository.INSTANCE;
   }
 
   create({ name, description }: ICreateSpecificationDTO): void {
