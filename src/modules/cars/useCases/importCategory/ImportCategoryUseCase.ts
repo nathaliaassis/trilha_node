@@ -3,8 +3,8 @@ import { ICategoriesRepository } from "../../repositories/ICategoriesRepository"
 class ImportCategoryUseCase {
   constructor(private categoriesRepository: ICategoriesRepository) { }
 
-  execute() {
-
+  execute(file: any) {
+    console.log(file);
   }
 }
 
