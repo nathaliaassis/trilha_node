@@ -1,13 +1,12 @@
-# IMAGEM
-FROM node  
-# DIRETORIO A SER CRIADO PARA ARMAZENAR INFOS
-WORKDIR  /usr/app
-# COPIA package.json PARA O DIRETORIO CRIADO
-COPY package.json ./ 
+FROM node
+
+WORKDIR /usr/app
+
+COPY package.json ./
 
 RUN npm install
 
-COPY . . 
+COPY . .
 
 EXPOSE 3333
 
