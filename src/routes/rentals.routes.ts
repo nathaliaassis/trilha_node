@@ -1,5 +1,5 @@
 import { Router } from 'express';
 
-const rentalsRoutes = Router();
+const rentxRoutes = Router();
 
-export { rentalsRoutes };
+export { rentxRoutes };
