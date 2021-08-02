@@ -4,10 +4,13 @@ import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
 // arquivo para instanciar tudo que foi criado para ser usado nas rotas
 
-const categoriesRepository = CategoriesRepository.getInstance();
+export default (): CreateCategoryController => {
+  console.log("************** fui chamado *********");
+  const categoriesRepository = new CategoriesRepository();
 
-const createCategoryUseCase = new CreateCategoryUseCase(categoriesRepository);
+  const createCategoryUseCase = new CreateCategoryUseCase(categoriesRepository);
 
-const createCategoryController = new CreateCategoryController(createCategoryUseCase);
+  const createCategoryController = new CreateCategoryController(createCategoryUseCase);
 
-export { createCategoryController };
+  return createCategoryController;
+}
