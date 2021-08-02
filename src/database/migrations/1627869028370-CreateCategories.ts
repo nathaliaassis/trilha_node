@@ -28,7 +28,7 @@ export class CreateCategories1627869028370 implements MigrationInterface {
 
         ],
       })
-    )
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
