@@ -1,3 +1,4 @@
+import { inject, injectable } from "tsyringe";
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
 interface IRequest {
@@ -8,9 +9,14 @@ interface IRequest {
 // as rotas não devem tratar condições, então criamos uma camada de serviço (Regras de negócio/ caso de uso) para 
 // tratar isso,
 // assim como, os services não devem retornar response e sim Error
+@injectable()
 class CreateCategoryUseCase {
   // no meu constructor recebo o repositorio
-  constructor(private categoriesRepository: ICategoriesRepository) { }
+
+  constructor(
+    @inject("CategoriesRepository")
+    private categoriesRepository: ICategoriesRepository
+  ) { }
 
   async execute({ name, description }: IRequest): Promise<void> {
     const categoryAlreadyExists = await this.categoriesRepository.findByName(name);
