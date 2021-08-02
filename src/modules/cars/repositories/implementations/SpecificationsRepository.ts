@@ -1,3 +1,4 @@
+import { getRepository, Repository } from "typeorm";
 import { Specification } from "../../entities/Specification";
 import { ICreateSpecificationDTO, ISpecificationRepository } from "../ISpecificationsRepository";
 
@@ -7,41 +8,24 @@ import { ICreateSpecificationDTO, ISpecificationRepository } from "../ISpecifica
  */
 
 class SpecificationsRespository implements ISpecificationRepository {
-  private specifications: Specification[];
+  private repository: Repository<Specification>;
 
-  // singleton - para nao criar novas intancias do repository
-  private static INSTANCE: SpecificationsRespository;
-
-  private constructor() {
-    this.specifications = [];
+  constructor() {
+    this.repository = getRepository(Specification);
   }
 
-  //get instance é responsável por instanciar nossa classe ou retornar 
-  // uma instancia já existente
-  public static getInstance(): SpecificationsRespository {
-    if (!SpecificationsRespository.INSTANCE) {
-      SpecificationsRespository.INSTANCE = new SpecificationsRespository();
-    }
-
-    return SpecificationsRespository.INSTANCE;
-  }
-
-  create({ name, description }: ICreateSpecificationDTO): void {
-    const specification = new Specification();
-    // passa todos os valores para dentro do specification
-    Object.assign(specification, {
+  async create({ name, description }: ICreateSpecificationDTO): Promise<void> {
+    const specification = this.repository.create({
       name,
-      description,
-      created_at: new Date()
-    });
+      description
+    })
 
-    this.specifications.push(specification);
+    await this.repository.save(specification);
   }
 
-  findByName(name: string): Specification {
-    const specification = this.specifications.find((specification) =>
-      specification.name === name
-    );
+  async findByName(name: string): Promise<Specification> {
+    const specification = this.repository.findOne({ name });
+
     return specification;
   }
 }
