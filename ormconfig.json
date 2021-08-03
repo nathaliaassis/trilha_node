@@ -5,13 +5,13 @@
   "username": "docker",
   "password": "ignite",
   "database": "rentx",
+  "entities": [
+    "./src/modules/**/entities/*.ts"
+  ],
   "migrations": [
     "./src/database/migrations/*.ts"
   ],
   "cli": {
     "migrationsDir": "./src/database/migrations"
-  },
-  "entities": [
-    "./src/modules/cars/entities/*.ts"
-  ]
+  }
 }
