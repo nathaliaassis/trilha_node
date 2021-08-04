@@ -31,7 +31,7 @@ class AuthencateUserUseCase {
     if (!user || !passwordMatch) {
       throw new Error('Email or password is incorrect!');
     }
-
+    // hash criado no md5 generator
     const token = sign({}, 'da4d0cd38fa8189f06f0819252b6e789', {
       subject: user.id,
       expiresIn: '1d'
