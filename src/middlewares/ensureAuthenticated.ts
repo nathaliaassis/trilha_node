@@ -27,6 +27,11 @@ export async function ensureAuthenticated(request: Request, response: Response, 
       throw new AppError('User does not exist', 401);
     }
 
+    //precisamos subescrever a tipagem das libs 
+    request.user = {
+      id: user_id
+    }
+
     next();
   } catch {
     throw new AppError('Invalid token.', 401);
