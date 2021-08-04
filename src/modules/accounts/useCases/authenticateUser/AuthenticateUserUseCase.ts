@@ -2,6 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { IUsersRepository } from '../../repositories/IUsersRepository';
+import { AppError } from "../../../../errors/AppError";
 
 interface IRequest {
   email: string;
@@ -29,7 +30,7 @@ class AuthencateUserUseCase {
     const passwordMatch = compare(password, user.password);
 
     if (!user || !passwordMatch) {
-      throw new Error('Email or password is incorrect!');
+      throw new AppError('Email or password is incorrect!');
     }
     // hash criado no md5 generator
     const token = sign({}, 'da4d0cd38fa8189f06f0819252b6e789', {
