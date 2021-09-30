@@ -1,6 +1,6 @@
 import { getRepository, Repository } from "typeorm";
-import { Specification } from "../../entities/Specification";
-import { ICreateSpecificationDTO, ISpecificationRepository } from "../ISpecificationsRepository";
+import { Specification } from "../entities/Specification";
+import { ICreateSpecificationDTO, ISpecificationRepository } from "@modules/cars/repositories/ISpecificationsRepository";
 
 /**
  * os repositories são responsáveis por toda manipulação de dados
