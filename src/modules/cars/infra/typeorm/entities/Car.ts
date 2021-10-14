@@ -3,7 +3,7 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn 
 import { Category } from './Category';
 
 //model
-@Entity("Cars")
+@Entity("cars")
 class Car {
   @PrimaryColumn()
   id?: string;
