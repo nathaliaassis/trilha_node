@@ -4,11 +4,11 @@ import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
 import { Car } from '@modules/cars/infra/typeorm/entities/Car';
 import { AppError } from '@shared/errors/AppError';
 
-// @injectable()
+@injectable()
 class CreateCarUseCase {
 
   constructor(
-    // @inject("CarsRepository")
+    @inject("CarsRepository")
     private carsRepository: ICarsRepository
   ) { }
   async execute({
