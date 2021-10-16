@@ -14,4 +14,4 @@ class ListCategoriesController {
   }
 }
 
-export { ListCategoriesController };
+export { ListCategoriesController }
