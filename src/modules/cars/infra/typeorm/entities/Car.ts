@@ -39,8 +39,8 @@ class Car {
 
   @ManyToMany(() => Specification)
   @JoinTable({
-    name: "specification_cars",
-    joinColumns: [{ name: "card_id" }],
+    name: "specifications_cars",
+    joinColumns: [{ name: "car_id" }],
     inverseJoinColumns: [{ name: "specification_id" }]
   })
   specifications: Specification[];
