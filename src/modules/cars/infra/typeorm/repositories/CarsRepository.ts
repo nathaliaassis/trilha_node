@@ -2,7 +2,10 @@ import { ICarsRepository, ICreateCarDTO } from "@modules/cars/repositories/ICars
 import { getRepository, Repository } from "typeorm";
 
 import { Car } from '../entities/Car';
-
+/**
+ * os repositories são responsáveis por toda manipulação de dados
+ * dentro da aplicação
+ */
 class CarsRepository implements ICarsRepository {
   private repository: Repository<Car>;
 
