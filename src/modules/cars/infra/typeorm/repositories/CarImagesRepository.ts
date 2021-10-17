@@ -1,4 +1,5 @@
-import { ICarsImagesRepository } from "@modules/cars/repositories/ICarsImagesRepository";
+
+import { ICarImagesRepository } from "@modules/cars/repositories/ICarImagesRepository";
 import { getRepository, Repository } from "typeorm";
 import { CarImage } from "../entities/CarImage";
 
@@ -6,7 +7,7 @@ import { CarImage } from "../entities/CarImage";
  * os repositories são responsáveis por toda manipulação de dados
  * dentro da aplicação
  */
-class CarsImagesRepository implements ICarsImagesRepository {
+class CarImagesRepository implements ICarImagesRepository {
   private repository: Repository<CarImage>;
 
   constructor() {
@@ -25,4 +26,4 @@ class CarsImagesRepository implements ICarsImagesRepository {
 
 }
 
-export { CarsImagesRepository };
+export { CarImagesRepository };
